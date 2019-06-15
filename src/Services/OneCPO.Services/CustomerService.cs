@@ -2,6 +2,7 @@
 using OneCPO.Data.Models;
 using OneCPO.Data.Models.Enums;
 using OneCPO.Services.Contracts;
+using OneCPO.ViewModels.Input.Customer;
 using System.Linq;
 
 namespace OneCPO.Services
@@ -23,7 +24,7 @@ namespace OneCPO.Services
             return customers;
         }
 
-        public int Create(Customer model)
+        public int Create(CreateCustomerModel model)
         {
             var customer = new Customer
             {
@@ -118,7 +119,7 @@ namespace OneCPO.Services
                     break;
 
                 case "Gender":
-                    customers = customers.OrderBy(s => s.Sex);
+                    customers = customers.OrderBy(s => s.Gender);
                     break;
 
                 default:

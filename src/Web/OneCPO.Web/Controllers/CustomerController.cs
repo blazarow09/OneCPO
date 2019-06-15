@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OneCPO.Services.Contracts;
+using OneCPO.ViewModels.Input.Customer;
 using ReflectionIT.Mvc.Paging;
 
 namespace OneCPO.Web.Controllers
@@ -38,6 +39,20 @@ namespace OneCPO.Web.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(CreateCustomerModel customer)
+        {
+            this.customerService.Create(customer);
+
+            return RedirectToAction("Index", "Customer");
         }
     }
 }

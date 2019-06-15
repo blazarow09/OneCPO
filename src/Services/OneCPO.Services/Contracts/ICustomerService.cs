@@ -1,4 +1,5 @@
 ﻿using OneCPO.Data.Models;
+using OneCPO.ViewModels.Input.Customer;
 using System.Linq;
 
 namespace OneCPO.Services.Contracts
@@ -9,7 +10,7 @@ namespace OneCPO.Services.Contracts
 
         IQueryable<Customer> GetAll();
 
-        int Create(Customer model);
+        int Create(CreateCustomerModel model);
 
         void EditCustomer(Customer input);
 
