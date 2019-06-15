@@ -11,9 +11,9 @@
 </nav>
 
 <p>
-    <a asp-action="Create"><input type="button" class="btn btn-primary" value="Create New" /></a>
+    <a asp-action="Create"><input type="button" class="btn btn-outline-primary" value="Create New" /></a>
 </p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>
@@ -54,11 +54,15 @@
                     @item.CreatedOn.ToShortDateString()
                 </td>
                 <td>
-                    <a asp-action="Activate" asp-route-id="@item.Id"><input type="button" class="btn btn-success" value="Activate" /></a>
-                    <a asp-action="Deactivate" asp-route-id="@item.Id"><input type="button" class="btn btn-primary" value="Deactivate" /></a>
-                    <a asp-action="Remove" asp-route-id="@item.Id"><input type="button" class="btn btn-danger" value="Remove" /></a>
+                    <a asp-action="Activate" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-success btn-sm" value="Activate" /></a>
+                    <a asp-action="Deactivate" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-info btn-sm" value="Deactivate" /></a>
+                    <a asp-action="Remove" asp-route-id="@item.Id"><input type="button" class="btn btn-danger btn-sm" value="Remove" /></a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<nav aria-label="Customers navigation">
+    <vc:pager paging-list="@Model" />
+</nav>

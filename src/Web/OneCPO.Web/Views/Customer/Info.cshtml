@@ -8,10 +8,8 @@
     var purchases = this.purchaseOrderService.GetPurchasesByUserId(Model.Id);
 }
 
-<h1>Info</h1>
-
 <div>
-    <h4>Customer</h4>
+    <h4>Customer info</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -53,7 +51,7 @@
 else
 {
     <div>
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>
@@ -98,9 +96,11 @@ else
             </tbody>
         </table>
     </div>
+    <div>
+        <a asp-action="Index" asp-controller="Customer"><input type="button" class="btn btn-primary" value="Back to list" /></a>
+        <a asp-action="Edit" asp-route-id="@Model.Id"><input type="button" class="btn btn-info" value="Edit" /></a>
+    </div>
 }
 
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
