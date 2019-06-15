@@ -1,6 +1,4 @@
-﻿@*@model IEnumerable<OneCPO.Data.Models.Customer>*@
-
-@using ReflectionIT.Mvc.Paging
+﻿@using ReflectionIT.Mvc.Paging
 @model ReflectionIT.Mvc.Paging.IPagingList<OneCPO.Data.Models.Customer>
 @addTagHelper *, ReflectionIT.Mvc.Paging
 
@@ -38,29 +36,29 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                <a asp-action="Info" asp-route-id="@item.Id">@item.FirstName  @item.LastName</a>
-            </td>
-            <td>
-                @item.Gender
-            </td>
-            <td>
-                @item.Telephone
-            </td>
+            <tr>
+                <td>
+                    <a asp-action="Info" asp-route-id="@item.Id">@item.FirstName  @item.LastName</a>
+                </td>
+                <td>
+                    @item.Gender
+                </td>
+                <td>
+                    @item.Telephone
+                </td>
 
-            <td>
-                @item.Status
-            </td>
-            <td>
-                @item.CreatedOn.ToShortDateString()
-            </td>
-            <td>
-                <a asp-action="Activate" asp-route-id="@item.Id" class="btnActivate"><input type="button" class="btn btn-success" value="Activate" /></a>
-                <a asp-action="Deactivate" asp-route-id="@item.Id" class="btnDeactivate"><input type="button" class="btn btn-primary" value="Deactivate" /></a>
-                <a asp-action="Remove" asp-route-id="@item.Id"><input type="button" class="btn btn-danger" value="Remove" /></a>
-            </td>
-        </tr>
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    @item.CreatedOn.ToShortDateString()
+                </td>
+                <td>
+                    <a asp-action="Activate" asp-route-id="@item.Id"><input type="button" class="btn btn-success" value="Activate" /></a>
+                    <a asp-action="Deactivate" asp-route-id="@item.Id"><input type="button" class="btn btn-primary" value="Deactivate" /></a>
+                    <a asp-action="Remove" asp-route-id="@item.Id"><input type="button" class="btn btn-danger" value="Remove" /></a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
