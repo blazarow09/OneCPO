@@ -1,5 +1,6 @@
 ﻿using OneCPO.Data.Models;
 using OneCPO.ViewModels.Input.Customer;
+using OneCPO.ViewModels.Input.PurchaseOrder;
 using System.Linq;
 
 namespace OneCPO.Services.Contracts
@@ -14,7 +15,9 @@ namespace OneCPO.Services.Contracts
 
         int Create(CreateCustomerModel model);
 
-        void EditCustomer(Customer input);
+        void EditCustomer(CreateCustomerModel input);
+
+        CreateCustomerModel MapCustomerToModel(int id);
 
         void DeleteUser(int id);
 

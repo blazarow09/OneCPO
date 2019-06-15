@@ -3,6 +3,7 @@ using OneCPO.Data.Models;
 using OneCPO.Data.Models.Enums;
 using OneCPO.Services.Contracts;
 using OneCPO.ViewModels.Input.Customer;
+using OneCPO.ViewModels.Input.PurchaseOrder;
 using System.Linq;
 
 namespace OneCPO.Services
@@ -70,7 +71,7 @@ namespace OneCPO.Services
             this.customerRepository.SaveChanges();
         }
 
-        public void EditCustomer(Customer input)
+        public void EditCustomer(CreateCustomerModel input)
         {
             var customer = this.GetSingleCustomer(input.Id);
 
@@ -133,6 +134,22 @@ namespace OneCPO.Services
         public Customer GetSingleCustomer(int id)
         {
             return this.customerRepository.All().FirstOrDefault(x => x.Id == id);
+        }
+
+        public CreateCustomerModel MapCustomerToModel(int id)
+        {
+            var input = this.GetSingleCustomer(id);
+
+            var customer = new CreateCustomerModel
+            {
+                Id = input.Id,
+                FirstName = input.FirstName,
+                LastName = input.LastName,
+                Gender = input.Gender,
+                Telephone = input.Telephone
+            };
+
+            return customer;
         }
     }
 }
