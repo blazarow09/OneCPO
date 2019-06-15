@@ -67,9 +67,9 @@
             </td>
             
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a asp-action="Activate" asp-route-id="@item.Id"><input type="button" class="btn btn-success" value="Activate" /></a>
+                <a asp-action="Deactivate" asp-route-id="@item.Id"><input type="button" class="btn btn-primary" value="Deactivate" /></a>
+                <a asp-action="Remove" asp-route-id="@item.Id"><input type="button" class="btn btn-danger" value="Remove" /></a>
             </td>
         </tr>
 }
