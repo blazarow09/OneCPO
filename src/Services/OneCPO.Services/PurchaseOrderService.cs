@@ -160,6 +160,10 @@ namespace OneCPO.Services
                 case "Cust":
                     purchases = purchases.OrderBy(s => s.Customer.FirstName);
                     break;
+
+                default:
+                    purchases = purchases.OrderBy(s => s.Description);
+                    break;
             }
 
             return purchases;
