@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 
 namespace OneCPO.Data.Common.Contracts
 {
@@ -8,10 +7,10 @@ namespace OneCPO.Data.Common.Contracts
     {
         IQueryable<TEntity> All();
 
-        Task AddAsync(TEntity entity);
+        void Add(TEntity entity);
 
         void Delete(TEntity entity);
 
-        Task<int> SaveChangesAsync();
+        int SaveChanges();
     }
 }
