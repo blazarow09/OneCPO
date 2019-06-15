@@ -3,23 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <StartupObject>OneCPO.Web.Program</StartupObject>
   </PropertyGroup>
 
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="ReflectionIT.Mvc.Paging" Version="3.4.0" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Data\OneCPO.Data.Models\OneCPO.Data.Models.csproj" />
-    <ProjectReference Include="..\..\Data\OneCPO.Data\OneCPO.Data.csproj" />
-    <ProjectReference Include="..\..\Services\OneCPO.Services\OneCPO.Services.csproj" />
-    <ProjectReference Include="..\..\ViewModels\OneCPO.ViewModels\OneCPO.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

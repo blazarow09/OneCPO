@@ -1,16 +1,15 @@
 ﻿using OneCPO.Data.Models;
-using OneCPO.ViewModels.Input.Customers;
+using OneCPO.ViewModels.Output;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace OneCPO.Services.Contracts
 {
     public interface ICustomerService
     {
-        IQueryable<Customer> Sort(string sortOrder, IQueryable<Customer> customers);
+        IQueryable<CustomersViewModel> GetAll();
 
-        IQueryable<Customer> GetAll();
-
-        int Create(CreateCustomerModel model);
+        Task<int> Create(Customer model);
 
         void EditCustomer(Customer input);
 
