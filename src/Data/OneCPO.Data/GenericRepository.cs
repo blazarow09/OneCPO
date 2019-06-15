@@ -18,9 +18,9 @@ namespace OneCPO.Data
             this.dbSet = this.dbContext.Set<TEntity>();
         }
 
-        public Task AddAsync(TEntity entity)
+        public void Add(TEntity entity)
         {
-            return this.dbContext.AddAsync(entity);
+            this.dbContext.Add(entity);
         }
 
         public IQueryable<TEntity> All()
@@ -38,9 +38,9 @@ namespace OneCPO.Data
             this.dbContext.Dispose();
         }
 
-        public Task<int> SaveChangesAsync()
+        public int SaveChanges()
         {
-            return this.dbContext.SaveChangesAsync();
+            return this.dbContext.SaveChanges();
         }
     }
 }
