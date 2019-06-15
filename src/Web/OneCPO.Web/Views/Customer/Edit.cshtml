@@ -1,10 +1,10 @@
-﻿@model OneCPO.Data.Models.Customer
+﻿@model OneCPO.ViewModels.Input.Customer.CreateCustomerModel
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h4>Customer</h4>
+<h4>Edit customer info</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,7 +24,7 @@
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
                 <select asp-for="Gender" class="form-control">
-                    <option selected>Choose...</option>
+                    <option selected disabled >Choose...</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
@@ -37,14 +37,10 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

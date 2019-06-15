@@ -3,7 +3,7 @@ using System;
 
 namespace OneCPO.ViewModels.Output
 {
-    public class CustomersViewModel 
+    public class CustomersViewModel
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

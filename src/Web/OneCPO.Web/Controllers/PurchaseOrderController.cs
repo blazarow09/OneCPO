@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OneCPO.Data.Models;
 using OneCPO.Services.Contracts;
 using OneCPO.ViewModels.Input.PurchaseOrder;
 using ReflectionIT.Mvc.Paging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -48,6 +48,22 @@ namespace OneCPO.Web.Controllers
         {
             this.purchaseOrderService.AddPurchase(purchase);
 
+            return RedirectToAction("Index", "PurchaseOrder");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var purchase = this.purchaseOrderService.GetSinglePurchase(id);
+
+            return  this.View(purchase);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(PurchaseOrder input)
+        {
+            this.purchaseOrderService.EditPurchase(input);
+            
             return RedirectToAction("Index", "PurchaseOrder");
         }
 

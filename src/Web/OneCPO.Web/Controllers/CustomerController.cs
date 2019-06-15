@@ -50,6 +50,11 @@ namespace OneCPO.Web.Controllers
         [HttpPost]
         public IActionResult Create(CreateCustomerModel customer)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(customer);
+            }
+
             this.customerService.Create(customer);
 
             return RedirectToAction("Index", "Customer");
@@ -82,13 +87,13 @@ namespace OneCPO.Web.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var customer = this.customerService.GetSingleCustomer(id);
+            var customer = this.customerService.MapCustomerToModel(id);
 
             return this.View(customer);
         }
 
         [HttpPost]
-        public IActionResult Edit(Customer input)
+        public IActionResult Edit(CreateCustomerModel input)
         {
             this.customerService.EditCustomer(input);
 

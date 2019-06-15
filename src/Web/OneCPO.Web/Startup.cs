@@ -39,7 +39,8 @@ namespace OneCPO.Web
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
 
-            services.AddPaging(options => {
+            services.AddPaging(options =>
+            {
                 options.ViewName = "Bootstrap4";
                 options.HtmlIndicatorDown = " <span>&darr;</span>";
                 options.HtmlIndicatorUp = " <span>&uarr;</span>";

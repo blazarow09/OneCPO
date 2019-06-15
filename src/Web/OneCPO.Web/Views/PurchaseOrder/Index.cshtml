@@ -1,16 +1,16 @@
 ﻿@*@model IEnumerable<OneCPO.Data.Models.PurchaseOrder>*@
 
 @using ReflectionIT.Mvc.Paging;
-@model  ReflectionIT.Mvc.Paging.IPagingList<OneCPO.Data.Models.PurchaseOrder>
+@model ReflectionIT.Mvc.Paging.IPagingList<OneCPO.Data.Models.PurchaseOrder>
 @addTagHelper *, ReflectionIT.Mvc.Paging
 
 @{
     ViewData["Title"] = "Index";
 }
 
-    <nav aria-label="Purchase order Paging">
-        @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
-    </nav>
+<nav aria-label="Purchase order Paging">
+    @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
+</nav>
 
 <p>
     <a asp-action="Create"><input type="button" class="btn btn-outline-primary" value="Create New" /></a>
@@ -42,37 +42,38 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @item.Description
-            </td>
-            <td>
-                @item.Price
-            </td>
-            <td>
-                @item.Quantity
-            </td>
-            <td>
-                @item.TotalAmount
-            </td>
-            <td>
-                @item.CreatedOn.ToShortDateString()
-            </td>
-            <td>
-                @item.Status
-            </td>
-            <td>
-                @item.Customer.FirstName
-            </td>
-            
-            <td>
-                <a asp-action="Activate" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-success btn-sm" value="Activate" /></a>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @item.TotalAmount
+                </td>
+                <td>
+                    @item.CreatedOn.ToShortDateString()
+                </td>
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    @item.Customer.FirstName
+                </td>
+
+                <td>
+                    <a asp-action="Activate" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-success btn-sm" value="Activate" /></a>
                     <a asp-action="Deactivate" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-info btn-sm" value="Deactivate" /></a>
-                <a asp-action="Remove" asp-route-id="@item.Id"><input type="button" class="btn btn-danger btn-sm" value="Remove" /></a>
-            </td>
-        </tr>
-}
+                    <a asp-action="Remove" asp-route-id="@item.Id"><input type="button" class="btn btn-danger btn-sm" value="Remove" /></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 

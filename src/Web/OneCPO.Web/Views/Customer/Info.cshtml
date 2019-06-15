@@ -44,6 +44,9 @@
         </dd>
     </dl>
 </div>
+<div class="mb-3">
+    <a asp-action="Edit" asp-route-id="@Model.Id"><input type="button" class="btn btn-outline-info" value="Edit Info" /></a>
+</div>
 @if (@purchases.Count() == 0)
 {
     <h1 class="text-md-center">There are no purchases.</h1>
@@ -69,7 +72,6 @@ else
                     <th>
                         Status
                     </th>
-
                 </tr>
             </thead>
             <tbody>
@@ -91,6 +93,10 @@ else
                         <td>
                             @item.Status
                         </td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="PurchaseOrder" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-primary" value="Edit" /></a>
+                            <a asp-action="Remove" asp-controller="PurchaseOrder" asp-route-id="@item.Id"><input type="button" class="btn btn-danger" value="Remove" /></a>
+                        </td>
                     </tr>
                 }
             </tbody>
@@ -98,9 +104,5 @@ else
     </div>
     <div>
         <a asp-action="Index" asp-controller="Customer"><input type="button" class="btn btn-primary" value="Back to list" /></a>
-        <a asp-action="Edit" asp-route-id="@Model.Id"><input type="button" class="btn btn-info" value="Edit" /></a>
     </div>
 }
-
-
-

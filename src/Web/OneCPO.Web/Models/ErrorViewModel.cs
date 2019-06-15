@@ -1,5 +1,3 @@
-using System;
-
 namespace OneCPO.Web.Models
 {
     public class ErrorViewModel
