@@ -19,7 +19,7 @@ namespace OneCPO.Services
             this.customerRepository = customerRepository;
         }
 
-        public IEnumerable<PurchaseOrder> GetAllPurchases()
+        public IQueryable<PurchaseOrder> GetAllPurchases()
         {
             var purchases = this.purchaseOrderRepository.All()
                 .Where(x => x.Status != StatusType.Deleted && x.Customer.Status != StatusType.Deleted)
@@ -33,8 +33,7 @@ namespace OneCPO.Services
                     TotalAmount = x.TotalAmount,
                     CustomerId = x.CustomerId,
                     Customer = x.Customer
-                })
-                .ToList();
+                }).AsQueryable();
 
             return purchases;
         }
@@ -100,6 +99,70 @@ namespace OneCPO.Services
 
             purchase.Status = StatusType.Deleted;
             this.purchaseOrderRepository.SaveChanges();
+        }
+
+        public IQueryable<PurchaseOrder> Sort(string sortOrder, IQueryable<PurchaseOrder> purchases)
+        {
+            switch (sortOrder)
+            {
+                case "description_desc":
+                    purchases = purchases.OrderByDescending(s => s.Description);
+                    break;
+
+                case "price_desc":
+                    purchases = purchases.OrderByDescending(s => s.Price);
+                    break;
+
+                case "qty_desc":
+                    purchases = purchases.OrderByDescending(s => s.Quantity);
+                    break;
+
+                case "status_desc":
+                    purchases = purchases.OrderByDescending(s => s.Status);
+                    break;
+
+                case "amount_desc":
+                    purchases = purchases.OrderByDescending(s => s.TotalAmount);
+                    break;
+
+                case "date_desc":
+                    purchases = purchases.OrderByDescending(s => s.CreatedOn);
+                    break;
+
+                case "cust_desc":
+                    purchases = purchases.OrderByDescending(s => s.Customer.FirstName);
+                    break;
+
+                case "Description":
+                    purchases = purchases.OrderBy(s => s.Description);
+                    break;
+
+                case "Price":
+                    purchases = purchases.OrderBy(s => s.Price);
+                    break;
+
+                case "Qty":
+                    purchases = purchases.OrderBy(s => s.Quantity);
+                    break;
+
+                case "Status":
+                    purchases = purchases.OrderBy(s => s.Status);
+                    break;
+
+                case "Amount":
+                    purchases = purchases.OrderBy(s => s.TotalAmount);
+                    break;
+
+                case "Date":
+                    purchases = purchases.OrderBy(s => s.CreatedOn);
+                    break;
+
+                case "Cust":
+                    purchases = purchases.OrderBy(s => s.Customer.FirstName);
+                    break;
+            }
+
+            return purchases;
         }
 
         private PurchaseOrder GetSinglePurchase(int id)
