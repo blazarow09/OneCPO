@@ -130,7 +130,7 @@ namespace OneCPO.Services
             return customers;
         }
 
-        private Customer GetSingleCustomer(int id)
+        public Customer GetSingleCustomer(int id)
         {
             return this.customerRepository.All().FirstOrDefault(x => x.Id == id);
         }

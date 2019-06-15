@@ -10,6 +10,8 @@ namespace OneCPO.Services.Contracts
 
         IQueryable<Customer> GetAll();
 
+        Customer GetSingleCustomer(int id);
+
         int Create(CreateCustomerModel model);
 
         void EditCustomer(Customer input);
