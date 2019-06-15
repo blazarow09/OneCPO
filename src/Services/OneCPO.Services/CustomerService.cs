@@ -3,7 +3,6 @@ using OneCPO.Data.Models;
 using OneCPO.Data.Models.Enums;
 using OneCPO.Services.Contracts;
 using OneCPO.ViewModels.Input.Customer;
-using OneCPO.ViewModels.Input.PurchaseOrder;
 using System.Linq;
 
 namespace OneCPO.Services

@@ -1,6 +1,5 @@
 ﻿using OneCPO.Data.Models;
 using OneCPO.ViewModels.Input.Customer;
-using OneCPO.ViewModels.Input.PurchaseOrder;
 using System.Linq;
 
 namespace OneCPO.Services.Contracts

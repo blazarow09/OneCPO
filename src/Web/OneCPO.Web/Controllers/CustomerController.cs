@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OneCPO.Data.Models;
 using OneCPO.Services.Contracts;
 using OneCPO.ViewModels.Input.Customer;
 using ReflectionIT.Mvc.Paging;

@@ -56,14 +56,14 @@ namespace OneCPO.Web.Controllers
         {
             var purchase = this.purchaseOrderService.GetSinglePurchase(id);
 
-            return  this.View(purchase);
+            return this.View(purchase);
         }
 
         [HttpPost]
         public IActionResult Edit(PurchaseOrder input)
         {
             this.purchaseOrderService.EditPurchase(input);
-            
+
             return RedirectToAction("Index", "PurchaseOrder");
         }
 
