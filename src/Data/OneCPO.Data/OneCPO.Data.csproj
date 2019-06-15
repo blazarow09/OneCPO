@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OneCPO.Data.Common\OneCPO.Data.Common.csproj" />
+    <ProjectReference Include="..\OneCPO.Data.Models\OneCPO.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>

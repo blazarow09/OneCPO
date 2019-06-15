@@ -1,0 +1,68 @@
+﻿@model ReflectionIT.Mvc.Paging.IPagingList<OneCPO.Data.Models.Customer>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<nav aria-label="Customer Paging">
+    @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
+</nav>
+
+<p>
+    <a asp-action="Create"><input type="button" class="btn btn-primary" value="Create New" /></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Full Name</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["GenderSortParm"]">Gender</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PhoneSortParm"]">Phone</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["StatusSortParm"]">Status</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">CreatedOn</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Info" asp-route-id="@item.Id">@item.FirstName  @item.LastName</a>
+                </td>
+                <td>
+                    @item.Gender
+                </td>
+                <td>
+                    @item.Telephone
+                </td>
+
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    @item.CreatedOn.ToShortDateString()
+                </td>
+                <td>
+                    <a asp-action="Activate" asp-route-id="@item.Id" class="btnActivate"><input type="button" class="btn btn-success" value="Activate" /></a>
+                    <a asp-action="Deactivate" asp-route-id="@item.Id" class="btnDeactivate"><input type="button" class="btn btn-primary" value="Deactivate" /></a>
+                    <a asp-action="Remove" asp-route-id="@item.Id"><input type="button" class="btn btn-danger" value="Remove" /></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav aria-label="Customers navigation">
+    <vc:pager paging-list="@Model" />
+</nav>

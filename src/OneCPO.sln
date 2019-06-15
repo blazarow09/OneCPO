@@ -1,19 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCPO.Web", "Web\OneCPO.Web\OneCPO.Web.csproj", "{2AD35DA3-6FFB-474E-B184-9C2C9177995A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneCPO.Web", "Web\OneCPO.Web\OneCPO.Web.csproj", "{2AD35DA3-6FFB-474E-B184-9C2C9177995A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCPO.Data", "Data\OneCPO.Data\OneCPO.Data.csproj", "{6DA16786-2B2B-4E74-9767-8B73E2CF15B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneCPO.Data", "Data\OneCPO.Data\OneCPO.Data.csproj", "{6DA16786-2B2B-4E74-9767-8B73E2CF15B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCPO.Data.Models", "Data\OneCPO.Data.Models\OneCPO.Data.Models.csproj", "{62A9D59A-1D37-4684-BB5D-C7605CE2AE03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneCPO.Data.Models", "Data\OneCPO.Data.Models\OneCPO.Data.Models.csproj", "{62A9D59A-1D37-4684-BB5D-C7605CE2AE03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCPO.Data.Common", "Data\OneCPO.Data.Common\OneCPO.Data.Common.csproj", "{F40CECBD-97D2-4078-9701-E2280229139A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneCPO.Services", "Services\OneCPO.Services\OneCPO.Services.csproj", "{419B32AA-5FD1-4995-86A6-9077808EA6E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCPO.Services", "Services\OneCPO.Services\OneCPO.Services.csproj", "{419B32AA-5FD1-4995-86A6-9077808EA6E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneCPO.ViewModels", "ViewModels\OneCPO.ViewModels\OneCPO.ViewModels.csproj", "{9377ECCD-FE58-4817-9DC9-7072D3865AEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCPO.ViewModels", "ViewModels\OneCPO.ViewModels\OneCPO.ViewModels.csproj", "{9377ECCD-FE58-4817-9DC9-7072D3865AEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneCPO.Data.Common", "Data\OneCPO.Data.Common\OneCPO.Data.Common.csproj", "{58075BD7-3FB2-4143-B41A-8A5FF9B43061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		{62A9D59A-1D37-4684-BB5D-C7605CE2AE03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62A9D59A-1D37-4684-BB5D-C7605CE2AE03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62A9D59A-1D37-4684-BB5D-C7605CE2AE03}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F40CECBD-97D2-4078-9701-E2280229139A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F40CECBD-97D2-4078-9701-E2280229139A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F40CECBD-97D2-4078-9701-E2280229139A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F40CECBD-97D2-4078-9701-E2280229139A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{419B32AA-5FD1-4995-86A6-9077808EA6E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{419B32AA-5FD1-4995-86A6-9077808EA6E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{419B32AA-5FD1-4995-86A6-9077808EA6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{9377ECCD-FE58-4817-9DC9-7072D3865AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9377ECCD-FE58-4817-9DC9-7072D3865AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9377ECCD-FE58-4817-9DC9-7072D3865AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58075BD7-3FB2-4143-B41A-8A5FF9B43061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58075BD7-3FB2-4143-B41A-8A5FF9B43061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58075BD7-3FB2-4143-B41A-8A5FF9B43061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58075BD7-3FB2-4143-B41A-8A5FF9B43061}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,8 +2,7 @@
 using OneCPO.Data.Models;
 using OneCPO.Data.Models.Enums;
 using OneCPO.Services.Contracts;
-using OneCPO.Services.Mapping;
-using OneCPO.ViewModels.Output;
+using OneCPO.ViewModels.Input.Customers;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,14 +17,15 @@ namespace OneCPO.Services
             this.customerRepository = customerRepository;
         }
 
-        public IQueryable<CustomersViewModel> GetAll()
+        public IQueryable<Customer> GetAll()
         {
-            var customers = this.customerRepository.All().To<CustomersViewModel>();
+            var customers = this.customerRepository.All()
+                .Where(x => x.Status != StatusType.Deleted);
 
             return customers;
         }
 
-        public async Task<int> Create(Customer model)
+        public int Create(CreateCustomerModel model)
         {
             var customer = new Customer
             {
@@ -35,8 +35,8 @@ namespace OneCPO.Services
                 Telephone = model.Telephone
             };
 
-            await this.customerRepository.AddAsync(customer);
-            await this.customerRepository.SaveChangesAsync();
+             this.customerRepository.Add(customer);
+             this.customerRepository.SaveChanges();
 
             return model.Id;
         }
@@ -48,7 +48,7 @@ namespace OneCPO.Services
             if (customer.Status != StatusType.Active && customer.Status != StatusType.Deleted)
             {
                 customer.Status = StatusType.Active;
-                this.customerRepository.SaveChangesAsync();
+                this.customerRepository.SaveChanges();
             }
         }
 
@@ -59,7 +59,7 @@ namespace OneCPO.Services
             if (customer.Status != StatusType.Inactive && customer.Status != StatusType.Deleted)
             {
                 customer.Status = StatusType.Inactive;
-                this.customerRepository.SaveChangesAsync();
+                this.customerRepository.SaveChanges();
             }
         }
 
@@ -68,7 +68,7 @@ namespace OneCPO.Services
             var customer = GetSingleCustomer(id);
 
             customer.Status = StatusType.Deleted;
-            this.customerRepository.SaveChangesAsync();
+            this.customerRepository.SaveChanges();
         }
 
         public void EditCustomer(Customer input)
@@ -80,7 +80,55 @@ namespace OneCPO.Services
             customer.Gender = input.Gender;
             customer.Telephone = input.Telephone;
 
-            this.customerRepository.SaveChangesAsync();
+            this.customerRepository.SaveChanges();
+        }
+
+        public IQueryable<Customer> Sort(string sortOrder, IQueryable<Customer> customers)
+        {
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    customers = customers.OrderByDescending(s => s.FirstName);
+                    break;
+
+                case "gender_desc":
+                    customers = customers.OrderByDescending(s => s.Gender);
+                    break;
+
+                case "phone_desc":
+                    customers = customers.OrderByDescending(s => s.Telephone);
+                    break;
+
+                case "status_desc":
+                    customers = customers.OrderByDescending(s => s.Status);
+                    break;
+
+                case "date_desc":
+                    customers = customers.OrderByDescending(s => s.CreatedOn);
+                    break;
+
+                case "Date":
+                    customers = customers.OrderBy(s => s.FirstName);
+                    break;
+
+                case "Phone":
+                    customers = customers.OrderBy(s => s.Telephone);
+                    break;
+
+                case "Status":
+                    customers = customers.OrderBy(s => s.Status);
+                    break;
+
+                case "Gender":
+                    customers = customers.OrderBy(s => s.Gender);
+                    break;
+
+                default:
+                    customers = customers.OrderBy(s => s.FirstName);
+                    break;
+            }
+
+            return customers;
         }
 
         private Customer GetSingleCustomer(int id)
