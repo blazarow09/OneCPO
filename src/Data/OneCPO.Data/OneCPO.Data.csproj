@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OneCPO.Data.Common\OneCPO.Data.Common.csproj" />
+    <ProjectReference Include="..\OneCPO.Data.Models\OneCPO.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>
