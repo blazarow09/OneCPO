@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OneCPO.Data.Models;
 using OneCPO.Services.Contracts;
 using OneCPO.ViewModels.Input.Customer;
 using ReflectionIT.Mvc.Paging;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace OneCPO.Web.Controllers
 {
