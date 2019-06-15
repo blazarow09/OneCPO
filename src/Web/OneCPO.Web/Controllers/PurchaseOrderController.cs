@@ -20,7 +20,7 @@ namespace OneCPO.Web.Controllers
 
         public async Task<IActionResult> Index(string sortOrder, int page = 1)
         {
-            ViewData["DescriptionSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DescriptionSortParm"] = String.IsNullOrEmpty(sortOrder) ? "description_desc" : "";
             ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
             ViewData["QtySortParm"] = sortOrder == "Qty" ? "qty_desc" : "Qty";
             ViewData["AmountSortParm"] = sortOrder == "Amount" ? "amount_desc" : "Amount";
@@ -47,6 +47,30 @@ namespace OneCPO.Web.Controllers
         public IActionResult Create(CreatePurchaseOrderModel purchase)
         {
             this.purchaseOrderService.AddPurchase(purchase);
+
+            return RedirectToAction("Index", "PurchaseOrder");
+        }
+
+        [HttpGet]
+        public IActionResult Activate(int id)
+        {
+            this.purchaseOrderService.Activate(id);
+
+            return RedirectToAction("Index", "PurchaseOrder");
+        }
+
+        [HttpGet]
+        public IActionResult Remove(int id)
+        {
+            this.purchaseOrderService.DeleteUser(id);
+
+            return RedirectToAction("Index", "PurchaseOrder");
+        }
+
+        [HttpGet]
+        public IActionResult Deactivate(int id)
+        {
+            this.purchaseOrderService.Deactivate(id);
 
             return RedirectToAction("Index", "PurchaseOrder");
         }
