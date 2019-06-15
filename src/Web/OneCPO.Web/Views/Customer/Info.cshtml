@@ -1,7 +1,11 @@
 ﻿@model OneCPO.Data.Models.Customer
+@using OneCPO.Services.Contracts
+
+@inject IPurchaseOrderService purchaseOrderService
 
 @{
     ViewData["Title"] = "Info";
+    var purchases = this.purchaseOrderService.GetPurchasesByUserId(Model.Id);
 }
 
 <h1>Info</h1>
@@ -42,6 +46,60 @@
         </dd>
     </dl>
 </div>
+@if (@purchases.Count() == 0)
+{
+    <h1 class="text-md-center">There are no purchases.</h1>
+}
+else
+{
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Total Amount
+                    </th>
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in purchases)
+                {
+                    <tr>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            @item.Quantity
+                        </td>
+                        <td>
+                            @item.TotalAmount
+                        </td>
+                        <td>
+                            @item.Status
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
