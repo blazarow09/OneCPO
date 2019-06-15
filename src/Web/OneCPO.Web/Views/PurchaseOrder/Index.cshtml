@@ -1,10 +1,16 @@
-﻿@model IEnumerable<OneCPO.Data.Models.PurchaseOrder>
+﻿@*@model IEnumerable<OneCPO.Data.Models.PurchaseOrder>*@
+
+@using ReflectionIT.Mvc.Paging;
+@model  ReflectionIT.Mvc.Paging.IPagingList<OneCPO.Data.Models.PurchaseOrder>
+@addTagHelper *, ReflectionIT.Mvc.Paging
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+    <nav aria-label="Purchase order Paging">
+        @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
+    </nav>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,59 +19,53 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DescriptionSortParm"]">Description</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]">Price</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["QtySortParm"]">Quantity</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TotalAmount)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["AmountSortParm"]">Total Amount</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedOn)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">Created On</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["StatusSortParm"]">Status</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CustomerId)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["CustSortParm"]">Customer name</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @item.Description
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @item.Price
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
+                @item.Quantity
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TotalAmount)
+                @item.TotalAmount
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedOn)
+                @item.CreatedOn.ToShortDateString()
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @item.Status
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerId)
+                @item.Customer.FirstName
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
+            
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
@@ -75,3 +75,7 @@
 }
     </tbody>
 </table>
+
+<nav aria-label="Customers navigation">
+    <vc:pager paging-list="@Model" />
+</nav>
