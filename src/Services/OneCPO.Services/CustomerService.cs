@@ -2,7 +2,6 @@
 using OneCPO.Data.Models;
 using OneCPO.Data.Models.Enums;
 using OneCPO.Services.Contracts;
-using OneCPO.Services.Mapping;
 using OneCPO.ViewModels.Output;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,14 +17,15 @@ namespace OneCPO.Services
             this.customerRepository = customerRepository;
         }
 
-        public IQueryable<CustomersViewModel> GetAll()
+        public IQueryable<Customer> GetAll()
         {
-            var customers = this.customerRepository.All().To<CustomersViewModel>();
+            var customers = this.customerRepository.All()
+                .Where(x => x.Status != StatusType.Deleted);
 
             return customers;
         }
 
-        public async Task<int> Create(Customer model)
+        public int Create(Customer model)
         {
             var customer = new Customer
             {
@@ -35,8 +35,8 @@ namespace OneCPO.Services
                 Telephone = model.Telephone
             };
 
-            await this.customerRepository.AddAsync(customer);
-            await this.customerRepository.SaveChangesAsync();
+            this.customerRepository.Add(customer);
+            this.customerRepository.SaveChanges();
 
             return model.Id;
         }
@@ -48,7 +48,7 @@ namespace OneCPO.Services
             if (customer.Status != StatusType.Active && customer.Status != StatusType.Deleted)
             {
                 customer.Status = StatusType.Active;
-                this.customerRepository.SaveChangesAsync();
+                this.customerRepository.SaveChanges();
             }
         }
 
@@ -59,7 +59,7 @@ namespace OneCPO.Services
             if (customer.Status != StatusType.Inactive && customer.Status != StatusType.Deleted)
             {
                 customer.Status = StatusType.Inactive;
-                this.customerRepository.SaveChangesAsync();
+                this.customerRepository.SaveChanges();
             }
         }
 
@@ -68,7 +68,7 @@ namespace OneCPO.Services
             var customer = GetSingleCustomer(id);
 
             customer.Status = StatusType.Deleted;
-            this.customerRepository.SaveChangesAsync();
+            this.customerRepository.SaveChanges();
         }
 
         public void EditCustomer(Customer input)
@@ -80,7 +80,7 @@ namespace OneCPO.Services
             customer.Gender = input.Gender;
             customer.Telephone = input.Telephone;
 
-            this.customerRepository.SaveChangesAsync();
+            this.customerRepository.SaveChanges();
         }
 
         private Customer GetSingleCustomer(int id)
