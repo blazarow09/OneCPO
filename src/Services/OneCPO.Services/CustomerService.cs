@@ -2,9 +2,7 @@
 using OneCPO.Data.Models;
 using OneCPO.Data.Models.Enums;
 using OneCPO.Services.Contracts;
-using OneCPO.ViewModels.Output;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace OneCPO.Services
 {
@@ -81,6 +79,54 @@ namespace OneCPO.Services
             customer.Telephone = input.Telephone;
 
             this.customerRepository.SaveChanges();
+        }
+
+        public IQueryable<Customer> Sort(string sortOrder, IQueryable<Customer> customers)
+        {
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    customers = customers.OrderByDescending(s => s.FirstName);
+                    break;
+
+                case "gender_desc":
+                    customers = customers.OrderByDescending(s => s.Gender);
+                    break;
+
+                case "phone_desc":
+                    customers = customers.OrderByDescending(s => s.Telephone);
+                    break;
+
+                case "status_desc":
+                    customers = customers.OrderByDescending(s => s.Status);
+                    break;
+
+                case "date_desc":
+                    customers = customers.OrderByDescending(s => s.CreatedOn);
+                    break;
+
+                case "Date":
+                    customers = customers.OrderBy(s => s.FirstName);
+                    break;
+
+                case "Phone":
+                    customers = customers.OrderBy(s => s.Telephone);
+                    break;
+
+                case "Status":
+                    customers = customers.OrderBy(s => s.Status);
+                    break;
+
+                case "Gender":
+                    customers = customers.OrderBy(s => s.Sex);
+                    break;
+
+                default:
+                    customers = customers.OrderBy(s => s.FirstName);
+                    break;
+            }
+
+            return customers;
         }
 
         private Customer GetSingleCustomer(int id)

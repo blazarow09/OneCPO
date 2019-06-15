@@ -5,6 +5,8 @@ namespace OneCPO.Services.Contracts
 {
     public interface ICustomerService
     {
+        IQueryable<Customer> Sort(string sortOrder, IQueryable<Customer> customers);
+
         IQueryable<Customer> GetAll();
 
         int Create(Customer model);
