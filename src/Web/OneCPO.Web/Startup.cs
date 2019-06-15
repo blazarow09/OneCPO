@@ -37,9 +37,8 @@ namespace OneCPO.Web
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddScoped<ICustomerService, CustomerService>();
-            //services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
+            services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
 
-            services.AddPaging();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
