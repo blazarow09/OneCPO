@@ -101,6 +101,18 @@ namespace OneCPO.Services
             this.purchaseOrderRepository.SaveChanges();
         }
 
+        public void EditPurchase(PurchaseOrder input)
+        {
+            var purchase = this.GetSinglePurchase(input.Id);
+
+            purchase.Price = input.Price;
+            purchase.Description = input.Description;
+            purchase.Quantity = input.Quantity;
+            purchase.TotalAmount = input.Price * input.Quantity;
+
+            this.purchaseOrderRepository.SaveChanges();
+        }
+
         public IQueryable<PurchaseOrder> Sort(string sortOrder, IQueryable<PurchaseOrder> purchases)
         {
             switch (sortOrder)
@@ -169,7 +181,7 @@ namespace OneCPO.Services
             return purchases;
         }
 
-        private PurchaseOrder GetSinglePurchase(int id)
+        public PurchaseOrder GetSinglePurchase(int id)
         {
             return this.purchaseOrderRepository.All()
                 .FirstOrDefault(x => x.Id == id);

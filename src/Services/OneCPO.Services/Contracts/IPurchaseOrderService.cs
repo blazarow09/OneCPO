@@ -11,6 +11,10 @@ namespace OneCPO.Services.Contracts
 
         IEnumerable<PurchaseOrder> GetPurchasesByUserId(int id);
 
+        PurchaseOrder GetSinglePurchase(int id);
+
+        void EditPurchase(PurchaseOrder input);
+
         ICollection<Customer> GetCustomers();
 
         IQueryable<PurchaseOrder> GetAllPurchases();
