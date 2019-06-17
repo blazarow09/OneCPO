@@ -24,7 +24,7 @@ namespace OneCPO.Web.Controllers
             ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
             ViewData["QtySortParm"] = sortOrder == "Qty" ? "qty_desc" : "Qty";
             ViewData["AmountSortParm"] = sortOrder == "Amount" ? "amount_desc" : "Amount";
-            ViewData["DateSortParm"] = sortOrder == "Status" ? "date_desc" : "Date";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["StatusSortParm"] = sortOrder == "Status" ? "status_desc" : "Status";
             ViewData["CustSortParm"] = sortOrder == "Cust" ? "cust_desc" : "Cust";
 
