@@ -49,60 +49,60 @@
 </div>
 @if (@purchases.Count() == 0)
 {
-    <h1 class="text-md-center">There are no purchases.</h1>
+<h1 class="text-md-center">There are no purchases.</h1>
 }
 else
 {
-    <div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        Description
-                    </th>
-                    <th>
-                        Price
-                    </th>
-                    <th>
-                        Quantity
-                    </th>
-                    <th>
-                        Total Amount
-                    </th>
-                    <th>
-                        Status
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in purchases)
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Total Amount
+                </th>
+                <th>
+                    Status
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in purchases)
                 {
-                    <tr>
-                        <td>
-                            @item.Description
-                        </td>
-                        <td>
-                            @item.Price
-                        </td>
-                        <td>
-                            @item.Quantity
-                        </td>
-                        <td>
-                            @item.TotalAmount
-                        </td>
-                        <td>
-                            @item.Status
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-controller="PurchaseOrder" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-primary" value="Edit" /></a>
-                            <a asp-action="Remove" asp-controller="PurchaseOrder" asp-route-id="@item.Id"><input type="button" class="btn btn-danger" value="Remove" /></a>
-                        </td>
-                    </tr>
+            <tr>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @item.TotalAmount
+                </td>
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="PurchaseOrder" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-primary" value="Edit" /></a>
+                    <a asp-action="Remove" asp-controller="PurchaseOrder" asp-route-id="@item.Id"><input type="button" class="btn btn-danger" value="Remove" /></a>
+                </td>
+            </tr>
                 }
-            </tbody>
-        </table>
-    </div>
-    <div>
-        <a asp-action="Index" asp-controller="Customer"><input type="button" class="btn btn-primary" value="Back to list" /></a>
-    </div>
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Index" asp-controller="Customer"><input type="button" class="btn btn-primary" value="Back to list" /></a>
+</div>
 }
