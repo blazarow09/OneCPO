@@ -68,8 +68,14 @@
                 </td>
 
                 <td>
-                    <a asp-action="Activate" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-success btn-sm" value="Activate" /></a>
-                    <a asp-action="Deactivate" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-info btn-sm" value="Deactivate" /></a>
+                    @if (@item.Status == OneCPO.Data.Models.Enums.StatusType.Active)
+                    {
+                        <a asp-action="Deactivate" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-info btn-sm" value="Deactivate" /></a>
+                    }
+                    else if (@item.Status == OneCPO.Data.Models.Enums.StatusType.Inactive)
+                    {
+                        <a asp-action="Activate" asp-route-id="@item.Id"><input type="button" class="btn btn-outline-success btn-sm" value="Activate" /></a>
+                    }
                     <a asp-action="Remove" asp-route-id="@item.Id"><input type="button" class="btn btn-danger btn-sm" value="Remove" /></a>
                 </td>
             </tr>
