@@ -24,18 +24,13 @@ namespace OneCPO.Web.Controllers
             ViewData["GenderSortParm"] = sortOrder == "Gender" ? "gender_desc" : "Gender";
             ViewData["PhoneSortParm"] = sortOrder == "Phone" ? "phone_desc" : "Phone";
             ViewData["StatusSortParm"] = sortOrder == "Status" ? "status_desc" : "Status";
-            ViewData["DateSortParm"] = sortOrder == "Status" ? "date_desc" : "Date";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
 
             var customers = this.customerService.GetAll();
 
             customers = this.customerService.Sort(sortOrder, customers);
 
             var model = await PagingList.CreateAsync(customers.OrderBy(p => 0), 6, page);
-
-            if (!ModelState.IsValid)
-            {
-                return this.View();
-            }
 
             return View(model);
         }
