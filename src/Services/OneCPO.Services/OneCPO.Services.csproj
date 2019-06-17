@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\OneCPO.Data.Common\OneCPO.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\OneCPO.Data.Models\OneCPO.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\OneCPO.Data\OneCPO.Data.csproj" />
     <ProjectReference Include="..\..\ViewModels\OneCPO.ViewModels\OneCPO.ViewModels.csproj" />
   </ItemGroup>
 

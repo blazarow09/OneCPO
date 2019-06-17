@@ -1,4 +1,5 @@
-﻿using OneCPO.Data.Common.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using OneCPO.Data.Common.Contracts;
 using OneCPO.Data.Models;
 using OneCPO.Data.Models.Enums;
 using OneCPO.Services.Contracts;
@@ -22,18 +23,8 @@ namespace OneCPO.Services
         public IQueryable<PurchaseOrder> GetAllPurchases()
         {
             var purchases = this.purchaseOrderRepository.All()
-                .Where(x => x.Status != StatusType.Deleted && x.Customer.Status != StatusType.Deleted)
-                .Select(x => new PurchaseOrder
-                {
-                    Id = x.Id,
-                    Description = x.Description,
-                    Price = x.Price,
-                    Quantity = x.Quantity,
-                    Status = x.Status,
-                    TotalAmount = x.TotalAmount,
-                    CustomerId = x.CustomerId,
-                    Customer = x.Customer
-                }).AsQueryable();
+                .Include(x => x.Customer)
+                .Where(x => x.Status != StatusType.Deleted && x.Customer.Status != StatusType.Deleted);
 
             return purchases;
         }
